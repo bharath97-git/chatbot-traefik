@@ -167,7 +167,7 @@ func initStandardRegistry(config *types.Prometheus) Registry {
 			Name:    entryPointReqDurationName,
 			Help:    "How long it took to process the request on an entrypoint, partitioned by status code, protocol, and method.",
 			Buckets: buckets,
-		}, []string{"code", "method", "protocol", "entrypoint"})
+		}, []string{"code", "method", "protocol", "entrypoint", "path"})
 		entryPointOpenConns := newGaugeFrom(stdprometheus.GaugeOpts{
 			Name: entryPointOpenConnsName,
 			Help: "How many open connections exist on an entrypoint, partitioned by method and protocol.",
@@ -211,7 +211,7 @@ func initStandardRegistry(config *types.Prometheus) Registry {
 			Name:    routerReqDurationName,
 			Help:    "How long it took to process the request on a router, partitioned by service, status code, protocol, and method.",
 			Buckets: buckets,
-		}, []string{"code", "method", "protocol", "router", "service"})
+		}, []string{"code", "method", "protocol", "router", "service", "path"})
 		routerOpenConns := newGaugeFrom(stdprometheus.GaugeOpts{
 			Name: routerOpenConnsName,
 			Help: "How many open connections exist on a router, partitioned by service, method, and protocol.",
@@ -254,7 +254,7 @@ func initStandardRegistry(config *types.Prometheus) Registry {
 			Name:    serviceReqDurationName,
 			Help:    "How long it took to process the request on a service, partitioned by status code, protocol, and method.",
 			Buckets: buckets,
-		}, []string{"code", "method", "protocol", "service"})
+		}, []string{"code", "method", "protocol", "service", "path"})
 		serviceOpenConns := newGaugeFrom(stdprometheus.GaugeOpts{
 			Name: serviceOpenConnsName,
 			Help: "How many open connections exist on a service, partitioned by method and protocol.",
